@@ -6,7 +6,7 @@
 
 struct  EventData
 {
-    uint32_t t;
+    uint64_t t;
     uint32_t raw; // x, y, polarity
 };
 
@@ -54,13 +54,20 @@ int main(int argc, char** argv) {
             // 遍历所有事件
             for (const auto& event : event_array->events) {
                 // 将事件数据写入 .dat 文件
-                EventData event;
+                EventData eventData;
 
-                event.t = static_cast<uint32_t>(event.ts.toNSec() / 1000);
-                event.raw = (p << 28) | (y << 14) | x;
+                uint16_t x = event.x;                   // x 坐标
+                uint16_t y = event.y;                   // y 坐标
+                uint8_t p = event.polarity ? 1 : 0; // 极性（True -> 1, False -> 0）
+
+                // eventData.t = static_cast<uint32_t>(event.ts.toNSec() / 1000-1741678966516621);//初值是100
+                eventData.t = static_cast<uint64_t>(event.ts.toNSec() / 1000);
+                
+
+                eventData.raw = (p << 28) | (y << 14) | x;
 
                 // 写入二进制数据
-                dat_file.write(reinterpret_cast<const char*>(&event), sizeof(EventData));
+                dat_file.write(reinterpret_cast<const char*>(&eventData), sizeof(EventData));
             }
         }
     }
