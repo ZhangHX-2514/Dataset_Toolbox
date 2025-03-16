@@ -3,13 +3,13 @@
 #include <rosbag/view.h>
 #include <dvs_msgs/EventArray.h>
 #include <fstream>
+#include <cstdint>
+#include <cstdlib> // for std::strtoull
 
-struct  EventData
-{
-    uint64_t t;
+struct EventData {
+    uint32_t t;
     uint32_t raw; // x, y, polarity
 };
-
 
 int main(int argc, char** argv) {
     // 初始化 ROS 节点
@@ -17,14 +17,15 @@ int main(int argc, char** argv) {
     ros::NodeHandle nh;
 
     // 检查输入参数
-    if (argc < 3) {
-        ROS_ERROR("Usage: rosrun your_package event_bag_to_dat <input_bag_file> <output_dat_file>");
+    if (argc < 4) {
+        ROS_ERROR("Usage: rosrun your_package event_bag_to_dat <input_bag_file> <output_dat_file> <T0>");
         return -1;
     }
 
-    // 获取输入和输出文件路径
+    // 获取输入和输出文件路径以及 T0
     std::string input_bag_file = argv[1];
     std::string output_dat_file = argv[2];
+    uint64_t T0 = std::strtoull(argv[3], nullptr, 10); // 将字符串转换为 uint64_t
 
     // 打开 ROS bag 文件
     rosbag::Bag bag;
@@ -36,7 +37,7 @@ int main(int argc, char** argv) {
     }
 
     // 设置要读取的 topic
-    std::vector<std::string> topics = {"/dvs/events"};
+    std::vector<std::string> topics = {"/event_new"};
     rosbag::View view(bag, rosbag::TopicQuery(topics));
 
     // 打开输出文件
@@ -58,12 +59,12 @@ int main(int argc, char** argv) {
 
                 uint16_t x = event.x;                   // x 坐标
                 uint16_t y = event.y;                   // y 坐标
-                uint8_t p = event.polarity ? 1 : 0; // 极性（True -> 1, False -> 0）
+                uint8_t p = event.polarity ? 1 : 0;     // 极性（True -> 1, False -> 0）
 
-                // eventData.t = static_cast<uint32_t>(event.ts.toNSec() / 1000-1741678966516621);//初值是100
-                eventData.t = static_cast<uint64_t>(event.ts.toNSec() / 1000);
-                
+                // 计算时间戳（以微秒为单位）并减去 T0
+                eventData.t = static_cast<uint32_t>((event.ts.toNSec() / 1000) - T0);
 
+                // 将 x, y, p 打包到 raw 中
                 eventData.raw = (p << 28) | (y << 14) | x;
 
                 // 写入二进制数据
