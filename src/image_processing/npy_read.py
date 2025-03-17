@@ -1,7 +1,7 @@
 import numpy as np
 
 # 读取 .npy 文件
-file_path = "/home/dai/workspace/datasets_build/src/event_converter/output.npy"  # 替换为你的 .npy 文件路径
+file_path = "/media/dai/新加卷F/2025-03-12/test_b/detection_dataset_duration_60s_ratio_1.0/test/17-04-04_11-00-13_cut_15_122500000_182500000_bbox.npy"  # 替换为你的 .npy 文件路径
 data = np.load(file_path, allow_pickle=True)
 
 # 打印数据信息

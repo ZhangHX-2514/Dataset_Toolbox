@@ -15,7 +15,7 @@ source devel/setup.bash
 roslaunch datasync Motion_Compensation_Event.launch
 
 # new terminal
-rosbag play -l -r 0.1 raw_data.bag 
+rosbag play -r 0.1 raw_data.bag 
 
 # new terminal
 rosbag record rosbag record /count_image /event_new -O event_image.bag
@@ -26,7 +26,7 @@ rosbag record rosbag record /count_image /event_new -O event_image.bag
 run `event_bag_to_dat.cpp`
 ```
 source devel/setup.bash
-rosrun event_converter event_bag_to_dat <input_bag_file> <output_dat_file> <T0>
+rosrun event_converter event_bag_to_dat <input_bag_file> <output_dat_file> <t>
 ```
 
 ## image_processing
@@ -43,6 +43,10 @@ run `json_to_npy.py`
 python json_to_npy.py /path/to/json/folder /path/to/output.npy
 ```
 
+## prophesee-automotive-dataset-toolbox
 
+
+## bash文件
+可做参考
 
 
