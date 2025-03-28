@@ -152,7 +152,6 @@ void EventVisualizer::show_split_image(std::vector<std::vector<float>>&time_imag
         // 创建一个 height_ x weight_ 的彩色图像
         cv::Mat image(height_, weight_, CV_8UC3);
 
-        // TODO：将 time_image 中的值映射到彩虹色
         for (int i = 0; i < height_; ++i) {
                 for (int j = 0; j < weight_; ++j) {
                 // 获取彩虹色

@@ -11,8 +11,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/core/eigen.hpp>
 #include <image_transport/image_transport.h> 
-
 #include <dvs_msgs/Event.h>
 #include <dvs_msgs/EventArray.h>
 #include <sensor_msgs/Imu.h>
@@ -23,6 +23,7 @@
 #include <boost/thread.hpp>     
 #include <mutex> 
 #include <chrono> 
+#include <cmath>
 
 using namespace std;
 
@@ -39,6 +40,33 @@ int weight_;
 float Focus_;
 float pixel_size_;
 
+// panorama params
+int panorama_height_;
+int panorama_weight_;
+float panorama_angle_;  // left angle
+cv::Mat count_image(panorama_height_,std::vector<int>(panorama_weight_));//count image
+
+//Rotation matrix
+Eigen::Matrix3d R;
+        R << 1., 0., 0.
+             0., -0.93033817, 0.36670272
+             0., -0.36670272, -0.93033817;
+double c1 = R[1, 1];
+double c2 = R[1, 2];
+double c3 = R[2, 1];
+double c4 = R[2, 2];
+double pi = M_PI;
+sll t0;
+
+// Intrinsics Matrix    //TODO 更新相机内参
+Eigen::Matrix3d K;
+    K << 800, 0, 320,
+         0, 800, 240,
+         0, 0, 1;
+double fx = K[0, 0];
+double fy = K[1, 1];
+double cx = K[0, 2];
+double cy = K[1, 2];
 
 //main class
 class EventVisualizer{
@@ -182,66 +210,99 @@ void EventVisualizer::data_process(){
                  float average_angular_rate = std::sqrt((average_angular_rate_x*average_angular_rate_x) + (average_angular_rate_y*average_angular_rate_y) + (average_angular_rate_z*average_angular_rate_z));
                 //  auto T1 = std::chrono::high_resolution_clock::now();
 
+                // Contruct panorama image
+                
+                Eigen::Vector2d center((double)imageSize.width / 2.0, (double)imageSize.height / 2.0);
                  
-                 //Motion  compensation
-                 sll t0=event_buffer[0].ts.toNSec();//the first event
+                //  sll t0=event_buffer[0].ts.toNSec();//the first event
                  float time_diff = 0.0;//time diff
                  int count =0; //event counter
                  int size=event_buffer.size();
-                 std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
-                 std::vector<std::vector<float>>time_image(height_,std::vector<float>(weight_));//time image
-                 for(int i=0;i<event_buffer.size();++i){
+                //  std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
+                //  std::vector<std::vector<float>>time_image(height_,std::vector<float>(weight_));//time image
+                for(int i=0;i<event_buffer.size();++i){
+
+                        // 1. Calculate the rotation matrix and vector in camera axis
                         time_diff = double(event_buffer[i].ts.toNSec()-t0)/1000000000.0;
 
-                        //Calculate the rotation offset of the event point
-                        float x_angular=time_diff*average_angular_rate_x;
-                        float y_angular=time_diff*average_angular_rate_y;
-                        float z_angular=time_diff*average_angular_rate_z;
+                        double cos_term = cos(2 * pi * time_diff);
+                        double sin_term = sin(2 * pi * time_diff);
+                        Eigen::Matrix3d R_eigen;
+                        R_eigen << cos_term, c3*sin_term, c4*sin_term,
+                                   0, c1, c2,
+                                   sin_term, c3*cos_term, c4*cos_term;
 
+                        Eigen::Vector3d e_ray_cam;
+                        e_ray_cam.x = (event_buffer[i].x - cx) / fx;
+                        e_ray_cam.y = (event_buffer[i].y - cy) / fy;
+                        e_ray_cam.z = 1.0;
+
+                        // 2. Rotate according to pose(t)
+                        Eigen::Vector3d e_ray_w = R_eigen * e_ray_cam;
+
+                        // 3. equirectangular projection
+                        Eigen::Vector2d px_mosaic;
                         
-                        int x=event_buffer[i].x - weight_/2; 
-                        int y=event_buffer[i].y - height_/2;
+                        // Calculate the pixel position in the panorama image
+                        const double phi = std::atan2(e_ray_w[0], e_ray_w[2]);
+                        const double theta = std::asin(e_ray_w[1] / e_ray_w.norm());
+
+                        const double rho = e_ray_w.norm();
+                        const double Ydivrho = e_ray_w[1] / rho;
+
+                        Eigen::Vector2d px_mosaic = center + Eigen::Vector2d(phi * fx, theta * fy);
+                        const int xx = px_mosaic[0],
+                                yy = px_mosaic[1];
+                        const float dx = px_mosaic[0] - xx,
+                                dy = px_mosaic[1] - yy;
                         
-                        //Angle of initial position of event point
-                        float pre_x_angel = atan(y*pixel_size_/Focus_);
-                        float pre_y_angel = atan(x*pixel_size_/Focus_);
-
-                        //compensate
-                        int compen_x = (int)((x*cos(z_angular) - sin(z_angular)*y) - (x - (Focus_*tan(pre_y_angel + y_angular)/pixel_size_)) + weight_/2);
-                        int compen_y = (int)((x*sin(z_angular) + cos(z_angular)*y) - (y - (Focus_*tan(pre_x_angel - x_angular)/pixel_size_)) + height_/2);
-
-
-                        if(compen_y < height_ && compen_y >= 0 && compen_x < weight_ && compen_x >= 0){
-                                if(count_image[compen_y][compen_x]<20) count_image[compen_y][compen_x]++; 
-                                time_image[compen_y][compen_x] += time_diff;
-                                event_buffer[count].x = compen_x;
-                                event_buffer[count].y = compen_y;
+                        // 4. Update the count image using bilinear voting
+                        if (1 <= xx && xx < weight_ - 1 && 1 <= yy && yy < height_ - 1) {
+                            if (ev->ts - t0 < t_next)   // unfinish the panorama image
+                            {
+                                count_image.at<float>(yy, xx) += (1.f-dx)*(1.f-dy);
+                                count_image.at<float>(yy  ,xx+1) += dx*(1.f-dy);
+                                count_image.at<float>(yy+1,xx  ) += (1.f-dx)*dy;
+                                count_image.at<float>(yy+1,xx+1) += dx*dy;
+                                event_buffer[count].x = event_buffer[i].x;
+                                event_buffer[count].y = event_buffer[i].y;
                                 count++;
+
+                            }
+                            else
+                            {
+                                // Publish the panorama image and reset the count image
+                                sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "mono8", count_image).toImageMsg();
+                                image_pub.publish(msg);
+                                count = 0;
+                                count_image = cv::Mat::zeros(height_, weight_, CV_32F);
+                                t0 = ev->ts;
+                            }
                         }
 
                 }
 
-                event_buffer.erase(event_buffer.begin() + count, event_buffer.end());
+                // event_buffer.erase(event_buffer.begin() + count, event_buffer.end());
 
                 // auto T2 = std::chrono::high_resolution_clock::now();
 
-                 int max_count = 0;
-                 float max_time = 0.0;
-                 float total_time = 0.0;
-                 float average_time = 0.0;
-                 int trigger_pixels = 0;
+                //  int max_count = 0;
+                //  float max_time = 0.0;
+                //  float total_time = 0.0;
+                //  float average_time = 0.0;
+                //  int trigger_pixels = 0;
 
-                 for(int i = 0; i<height_; ++i){
-                        for(int j = 0; j < weight_; ++j){
-                                if(count_image[i][j] != 0){
-                                        time_image[i][j] /= count_image[i][j];
-                                        max_count = std::max(max_count,count_image[i][j]);
-                                }
-                        }
-                 }
+                //  for(int i = 0; i<height_; ++i){
+                //         for(int j = 0; j < weight_; ++j){
+                //                 if(count_image[i][j] != 0){
+                //                         time_image[i][j] /= count_image[i][j];
+                //                         max_count = std::max(max_count,count_image[i][j]);
+                //                 }
+                //         }
+                //  }
 
-                events(event_buffer,size);
-                show_count_image(count_image, max_count,event_buffer[0].ts);  
+                // events(event_buffer,size);
+                // show_count_image(count_image, max_count,event_buffer[0].ts);  
                 // auto T3 = std::chrono::high_resolution_clock::now();
                 //  auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(T1-T0);
                 //  auto duration2 = std::chrono::duration_cast<std::chrono::microseconds>(T2-T1);
@@ -286,6 +347,8 @@ void EventVisualizer::data_process(){
 
    nh_priv.param<int>("weight_param", weight_, 346);
    nh_priv.param<int>("height_param", height_, 260);
+   nh_priv.param<int>("panorama_weight", panorama_weight_, 706);
+   nh_priv.param<int>("panorama_height", panorama_height_, 260);
    nh_priv.param<float>("focus", Focus_, 6550);
    nh_priv.param<float>("pixel_size",pixel_size_ , 18.5);
 
