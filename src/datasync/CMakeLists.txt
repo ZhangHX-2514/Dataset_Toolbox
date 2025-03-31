@@ -30,6 +30,11 @@ find_package(OpenCL)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
+# 查找 Eigen3
+find_package(Eigen3 REQUIRED)
+
+# 添加 Eigen3 的头文件路径
+include_directories(${EIGEN3_INCLUDE_DIR})
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
