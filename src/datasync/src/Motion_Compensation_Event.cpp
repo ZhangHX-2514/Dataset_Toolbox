@@ -44,10 +44,10 @@ float pixel_size_;
 // panorama params
 int panorama_height_;
 int panorama_weight_;
-cv::Mat count_image(panorama_height_, panorama_weight_, CV_32S, cv::Scalar(0)); // 初始化为整型矩阵，值为 0
+cv::Mat count_pano = cv::Mat::zeros(panorama_height_, panorama_weight_, CV_32F); // 初始化为浮点型矩阵，值为 0
 
 double pi = M_PI;
-sll t0;
+sll t0_p;
 
 // Image size
 cv::Size imageSize(panorama_weight_, panorama_height_);
@@ -59,6 +59,7 @@ class EventVisualizer {
         //publish topic
         ros::Publisher image_pub;
         ros::Publisher event_pub;
+        ros::Publisher pano_pub;
 
         //subscribe topic
         ros::Subscriber event_sub;
@@ -87,11 +88,13 @@ class EventVisualizer {
             this->imu_sub = this->n_.subscribe("/dvs/imu", 7, &EventVisualizer::imu_cb, this);
             //pub
             this->image_pub = n_.advertise<sensor_msgs::Image>("/count_image", 1);
+            this->pano_pub = n_.advertise<sensor_msgs::Image>("/count_pano", 1);
             this->event_pub = n_.advertise<dvs_msgs::EventArray>("/event_new", 1);
         }
 
         //visualize
-        void show_count_image(std::vector<std::vector<int>>& count_image, int& max_count, ros::Time timestamp);
+        void show_count_image(std::vector<std::vector<int>>&count_image,int& max_count, ros::Time timestamp);
+        void show_count_pano(cv::Mat& count_image, double& max_count, ros::Time timestamp);
 
         //main process function
         void data_process();
@@ -141,25 +144,38 @@ class EventVisualizer {
 
 
 //Show compensated count image 
-void EventVisualizer::show_count_image(std::vector<std::vector<int>>& count_image, int& max_count, ros::Time timestamp) {
+void EventVisualizer::show_count_image(std::vector<std::vector<int>>&count_image, int& max_count, ros::Time timestamp){
     using namespace cv;
-    cv::Mat image(panorama_height_, weight_, CV_8UC1);
-    int scale = (int)(255 / max_count) + 1;
-    for (int i = 0; i < panorama_height_; ++i) {
-        for (int j = 0; j < weight_; ++j) {
-            image.at<uchar>(i, j) = count_image[i][j] * scale;
-        }
+    cv::Mat image(height_,weight_,CV_8UC1);
+    int scale = (int)(255/max_count) + 1;
+    for(int i = 0;i < height_;++i){
+            for(int j = 0; j < weight_;++j){
+                    image.at<uchar>(i,j) = count_image[i][j]*scale;
+            }
     }
 
-    // Create a header with the specified timestamp
-    std_msgs::Header header;
-    header.stamp = timestamp;  // Set the timestamp
+    //Change to sensor_message
+    sensor_msgs::ImagePtr msg2 = cv_bridge::CvImage(std_msgs::Header(), "mono8", image).toImageMsg();
+    image_pub.publish(*msg2); 
+}
 
-    // Convert the OpenCV image to a sensor_msgs::Image message
+void EventVisualizer::show_count_pano(cv::Mat& count_image, double& max_count, ros::Time timestamp) {
+    // 创建灰度图像
+    cv::Mat image(panorama_height_, panorama_weight_, CV_8UC1);
+
+    // 计算缩放比例，将 count_image 的值映射到 [0, 255]
+    int scale = (int)(255 / max_count) + 1;
+    count_image.convertTo(image, CV_8UC1, scale); // 将浮点型矩阵转换为 8 位无符号整型矩阵
+
+    // 创建带时间戳的 ROS 消息头
+    std_msgs::Header header;
+    header.stamp = timestamp;
+
+    // 将 OpenCV 图像转换为 ROS 图像消息
     sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "mono8", image).toImageMsg();
 
-    // Publish the image message
-    image_pub.publish(msg);
+    // 发布图像消息
+    pano_pub.publish(msg);
 }
 
 void EventVisualizer::events(const std::vector<dvs_msgs::Event>& event_buffer, int size) {
@@ -205,12 +221,47 @@ void EventVisualizer::data_process() {
         float average_angular_rate = std::sqrt((average_angular_rate_x * average_angular_rate_x) + (average_angular_rate_y * average_angular_rate_y) + (average_angular_rate_z * average_angular_rate_z));
         //  auto T1 = std::chrono::high_resolution_clock::now();
 
-        // Contruct panorama image
 
+        // Motion compensation
+        sll t0=event_buffer[0].ts.toNSec();//the first event
+        float time_diff = 0.0;//time diff
+        std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
+        std::vector<std::vector<float>>time_image(height_,std::vector<float>(weight_));//time image
+        for(int i=0;i<event_buffer.size();++i){
+            time_diff = double(event_buffer[i].ts.toNSec()-t0)/1000000000.0;
+
+            //Calculate the rotation offset of the event point
+            float x_angular=time_diff*average_angular_rate_x;
+            float y_angular=time_diff*average_angular_rate_y;
+            float z_angular=time_diff*average_angular_rate_z;
+
+            
+            int x=event_buffer[i].x - weight_/2; 
+            int y=event_buffer[i].y - height_/2;
+            
+            //Angle of initial position of event point
+            float pre_x_angel = atan(y*pixel_size_/Focus_);
+            float pre_y_angel = atan(x*pixel_size_/Focus_);
+
+            //compensate
+            int compen_x = (int)((x*cos(z_angular) - sin(z_angular)*y) - (x - (Focus_*tan(pre_y_angel + y_angular)/pixel_size_)) + weight_/2);
+            int compen_y = (int)((x*sin(z_angular) + cos(z_angular)*y) - (y - (Focus_*tan(pre_x_angel - x_angular)/pixel_size_)) + height_/2);
+            // event_buffer[i].x = compen_x;
+            // event_buffer[i].y = compen_y;
+            
+            
+            //count image and time image
+            if(compen_y < height_ && compen_y >= 0 && compen_x < weight_ && compen_x >= 0){
+                if(count_image[compen_y][compen_x]<20)count_image[compen_y][compen_x]++; 
+                time_image[compen_y][compen_x] += time_diff;
+            }
+        }
+
+        // Contruct panorama image
         Eigen::Vector2d center((double)imageSize.width / 2.0, (double)imageSize.height / 2.0);
 
         //  sll t0=event_buffer[0].ts.toNSec();//the first event
-        float time_diff = 0.0; //time diff
+        float t_diff = 0.0; //time diff
         int count = 0; //event counter
         int size = event_buffer.size();
         //  std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
@@ -218,10 +269,10 @@ void EventVisualizer::data_process() {
         for (int i = 0; i < event_buffer.size(); ++i) {
 
             // 1. Calculate the rotation matrix and vector in camera axis
-            time_diff = double(event_buffer[i].ts.toNSec() - t0) / 1000000000.0;
+            t_diff = double(event_buffer[i].ts.toNSec() - t0_p) / 1000000000.0;
 
-            double cos_term = cos(2 * pi * time_diff);
-            double sin_term = sin(2 * pi * time_diff);
+            double cos_term = cos(2 * pi * t_diff);
+            double sin_term = sin(2 * pi * t_diff);
             Eigen::Matrix3d R_eigen;
             R_eigen << cos_term, R(2, 1) * sin_term, R(2, 2) * sin_term,
                        0, R(1, 1), R(1, 2),
@@ -253,25 +304,20 @@ void EventVisualizer::data_process() {
 
             // 4. Update the count image using bilinear voting
             if (1 <= xx && xx < panorama_weight_ - 1 && 1 <= yy && yy < panorama_height_ - 1) {
-                if (time_diff < 1.) // unfinish the panorama image
-                {
-                    count_image.at<float>(yy, xx) += (1.f - dx) * (1.f - dy);
-                    count_image.at<float>(yy, xx + 1) += dx * (1.f - dy);
-                    count_image.at<float>(yy + 1, xx) += (1.f - dx) * dy;
-                    count_image.at<float>(yy + 1, xx + 1) += dx * dy;
-                    event_buffer[count].x = event_buffer[i].x;
-                    event_buffer[count].y = event_buffer[i].y;
+                if (t_diff < 1.) {
+                    count_pano.at<float>(yy, xx) += (1.f - dx) * (1.f - dy);
+                    count_pano.at<float>(yy, xx + 1) += dx * (1.f - dy);
+                    count_pano.at<float>(yy + 1, xx) += (1.f - dx) * dy;
+                    count_pano.at<float>(yy + 1, xx + 1) += dx * dy;
                     count++;
-
-
                 } else {
-                    // Publish the panorama image and reset the count image
-                    std::cout << "Publish panorama image!" << t0 << std::endl;
-                    sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "mono8", count_image).toImageMsg();
-                    image_pub.publish(msg);
+                    double min_val, max_val;
+                    cv::Point min_loc, max_loc;
+                    cv::minMaxLoc(count_pano, &min_val, &max_val, &min_loc, &max_loc);
+                    show_count_pano(count_pano, max_val, event_buffer[0].ts);
                     count = 0;
-                    count_image = cv::Mat::zeros(panorama_height_, weight_, CV_32F);
-                    t0 = event_buffer[count].ts.toNSec();
+                    count_pano = cv::Mat::zeros(panorama_height_, panorama_weight_, CV_32F); // 重置为 0
+                    t0_p = event_buffer[i].ts.toNSec();
                 }
             }
         }
@@ -280,23 +326,23 @@ void EventVisualizer::data_process() {
 
         // auto T2 = std::chrono::high_resolution_clock::now();
 
-        //  int max_count = 0;
-        //  float max_time = 0.0;
-        //  float total_time = 0.0;
-        //  float average_time = 0.0;
-        //  int trigger_pixels = 0;
+         int max_count = 0;
+         float max_time = 0.0;
+         float total_time = 0.0;
+         float average_time = 0.0;
+         int trigger_pixels = 0;
 
-        //  for(int i = 0; i<height_; ++i){
-        //         for(int j = 0; j < weight_; ++j){
-        //                 if(count_image[i][j] != 0){
-        //                         time_image[i][j] /= count_image[i][j];
-        //                         max_count = std::max(max_count,count_image[i][j]);
-        //                 }
-        //         }
-        //  }
+         for(int i = 0; i<height_; ++i){
+                for(int j = 0; j < weight_; ++j){
+                        if(count_image[i][j] != 0){
+                                time_image[i][j] /= count_image[i][j];
+                                max_count = std::max(max_count,count_image[i][j]);
+                        }
+                }
+         }
 
         // events(event_buffer,size);
-        // show_count_image(count_image, max_count,event_buffer[0].ts);  
+        show_count_image(count_image, max_count,event_buffer[0].ts);  
         // auto T3 = std::chrono::high_resolution_clock::now();
         //  auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(T1-T0);
         //  auto duration2 = std::chrono::duration_cast<std::chrono::microseconds>(T2-T1);
