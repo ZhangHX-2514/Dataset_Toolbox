@@ -47,11 +47,16 @@ def json_to_npy(json_folder, output_npy_path):
 
             # 提取 shapes 中的标注框信息
             for shape in json_data["shapes"]:
-                # 提取边界框的左上角和右下角坐标
+                # 提取边界框的两点坐标
                 (x1, y1), (x2, y2) = shape["points"]
                 # 计算边界框的宽度 (w) 和高度 (h)
                 w = abs(x2 - x1)
                 h = abs(y2 - y1)
+
+                # 寻找左上点
+
+                x1=min(x1,x2)
+                y1=min(y1,y2)
 
                 # 从文件名中提取 ts（假设文件名是 xxxx.json）
                 ts = int(os.path.splitext(filename)[0])  # 去掉扩展名并转换为整数
