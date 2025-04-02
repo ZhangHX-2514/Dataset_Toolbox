@@ -32,7 +32,8 @@
 
 	</node>
 	<!-- Start rviz visualization with preset config -->
-  	<!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find datasync)/launch/dvxplorer.rviz"/> -->
+  	    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find datasync)/config/count_pano.rviz" output="screen">
+	</node>
 </launch>
 
 

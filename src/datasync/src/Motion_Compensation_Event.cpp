@@ -44,8 +44,8 @@ float pixel_size_;
 
 // panorama params
 int panorama_height_;
-int panorama_weight_;
-cv::Mat count_pano = cv::Mat::zeros(panorama_height_, panorama_weight_, CV_32F); // 初始化为浮点型矩阵，值为 0
+int panorama_width_;
+cv::Mat count_pano = cv::Mat::zeros(panorama_height_, panorama_width_, CV_32F); // 初始化为浮点型矩阵，值为 0
 
 double pi = M_PI;
 sll t0_p;
@@ -53,7 +53,7 @@ sll t0_p;
 // bool first_got_event_= true;
 
 // Image size
-cv::Size imageSize(panorama_weight_, panorama_height_);
+cv::Size imageSize(panorama_width_, panorama_height_);
 
 //main class
 class EventVisualizer {
@@ -167,14 +167,18 @@ void EventVisualizer::show_count_image(std::vector<std::vector<int>>&count_image
             }
     }
 
+    std_msgs::Header header;
+    header.stamp = timestamp;
+
     //Change to sensor_message
-    sensor_msgs::ImagePtr msg2 = cv_bridge::CvImage(std_msgs::Header(), "mono8", image).toImageMsg();
+    sensor_msgs::ImagePtr msg2 = cv_bridge::CvImage(header, "mono8", image).toImageMsg();
     image_pub.publish(*msg2); 
 }
 
+
 void EventVisualizer::show_count_pano(cv::Mat& count_image, double& max_count, ros::Time timestamp) {
     // 创建灰度图像
-    cv::Mat image(panorama_height_, panorama_weight_, CV_8UC1);
+    cv::Mat image(panorama_height_, panorama_width_, CV_8UC1);
 
     // 计算缩放比例，将 count_image 的值映射到 [0, 255]
     int scale = (int)(255 / max_count) + 1;
@@ -233,72 +237,12 @@ void EventVisualizer::events(const std::vector<dvs_msgs::Event>& event_buffer, i
 void EventVisualizer::data_process() {
 
     if (imu_buffer_[imu_buffer_.size() - 1].header.stamp.toNSec() > event_buffer[0].ts.toNSec()) {
-        //  auto T0 = std::chrono::high_resolution_clock::now();
-        float angular_velocity_x = 0.0, angular_velocity_y = 0.0, angular_velocity_z = 0.0;
-        float average_angular_rate_x, average_angular_rate_y, average_angular_rate_z;
-
-        int cnt = 0; //imu counter
-
-        for (int i = 0; i < imu_buffer_.size(); ++i) {
-            if (imu_buffer_[i].header.stamp.toNSec() >= (event_buffer[0].ts.toNSec() - 3000000)) {
-                angular_velocity_x += imu_buffer_[i].angular_velocity.x;
-                angular_velocity_y += imu_buffer_[i].angular_velocity.y;
-                angular_velocity_z += imu_buffer_[i].angular_velocity.z;
-                cnt++;
-            }
-        }
-        //Calculate the average imu angular rates
-        average_angular_rate_x = angular_velocity_x / float(cnt);
-        average_angular_rate_y = angular_velocity_y / float(cnt);
-        average_angular_rate_z = angular_velocity_z / float(cnt);
-        float average_angular_rate = std::sqrt((average_angular_rate_x * average_angular_rate_x) + (average_angular_rate_y * average_angular_rate_y) + (average_angular_rate_z * average_angular_rate_z));
-        //  auto T1 = std::chrono::high_resolution_clock::now();
-
-
-        // Motion compensation
-        sll t0=event_buffer[0].ts.toNSec();//the first event
-        float time_diff = 0.0;//time diff
-        std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
-        std::vector<std::vector<float>>time_image(height_,std::vector<float>(weight_));//time image
-        for(int i=0;i<event_buffer.size();++i){
-            time_diff = double(event_buffer[i].ts.toNSec()-t0)/1000000000.0;
-
-            //Calculate the rotation offset of the event point
-            float x_angular=time_diff*average_angular_rate_x;
-            float y_angular=time_diff*average_angular_rate_y;
-            float z_angular=time_diff*average_angular_rate_z;
-
-            
-            int x=event_buffer[i].x - weight_/2; 
-            int y=event_buffer[i].y - height_/2;
-            
-            //Angle of initial position of event point
-            float pre_x_angel = atan(y*pixel_size_/Focus_);
-            float pre_y_angel = atan(x*pixel_size_/Focus_);
-
-            //compensate
-            int compen_x = (int)((x*cos(z_angular) - sin(z_angular)*y) - (x - (Focus_*tan(pre_y_angel + y_angular)/pixel_size_)) + weight_/2);
-            int compen_y = (int)((x*sin(z_angular) + cos(z_angular)*y) - (y - (Focus_*tan(pre_x_angel - x_angular)/pixel_size_)) + height_/2);
-            // event_buffer[i].x = compen_x;
-            // event_buffer[i].y = compen_y;
-            
-            
-            //count image and time image
-            if(compen_y < height_ && compen_y >= 0 && compen_x < weight_ && compen_x >= 0){
-                if(count_image[compen_y][compen_x]<20)count_image[compen_y][compen_x]++; 
-                time_image[compen_y][compen_x] += time_diff;
-            }
-        }
 
         // Contruct panorama image
-        Eigen::Vector2d center((double)panorama_weight_ / 2.0, (double)480);
+        Eigen::Vector2d center((double)panorama_width_ / 2.0, (double)480);
 
-        //  sll t0=event_buffer[0].ts.toNSec();//the first event
         float t_diff = 0.0; //time diff
-        int count = 0; //event counter
         int size = event_buffer.size();
-        //  std::vector<std::vector<int>>count_image(height_,std::vector<int>(weight_));//count image
-        //  std::vector<std::vector<float>>time_image(height_,std::vector<float>(weight_));//time image
 
         // if(first_got_event_){
             // t0_p = event_buffer[0].ts.toNSec();
@@ -306,7 +250,7 @@ void EventVisualizer::data_process() {
             // first_got_event_=false;
         // }
         
-        for (int i = 0; i < event_buffer.size(); i+=2) {
+        for (int i = 0; i < event_buffer.size(); i+=5) {
 
             // 1. Calculate the rotation matrix and vector in camera axis
             t_diff = double(event_buffer[i].ts.toNSec() - t0_p) / 1000000000.0;
@@ -324,8 +268,10 @@ void EventVisualizer::data_process() {
 
             cv::undistortPoints(distorted_points, undistorted_points, K, D);
             Eigen::Vector3d e_ray_cam(undistorted_points[0].x, undistorted_points[0].y, 1.0);
-            // e_ray_cam.x() = (event_buffer[i].x - K(0, 2)) / K(0, 0);
-            // e_ray_cam.y() = (event_buffer[i].y - K(1, 2)) / K(1, 1);
+
+            // Eigen::Vector3d e_ray_cam;
+            // e_ray_cam.x() = (event_buffer[i].x - K.at<double>(0, 2)) / K.at<double>(0, 0);
+            // e_ray_cam.y() = (event_buffer[i].y - K.at<double>(1, 2)) / K.at<double>(1, 1);
             // e_ray_cam.z() = 1.0;
 
             // 2. Rotate according to pose(t)
@@ -341,7 +287,7 @@ void EventVisualizer::data_process() {
             const double rho = e_ray_w.norm();
             const double Ydivrho = e_ray_w[1] / rho;
 
-            px_mosaic = center + Eigen::Vector2d(phi * panorama_weight_ / (2.0 * pi), -theta * panorama_height_ / (pi*57.99/180));
+            px_mosaic = center + Eigen::Vector2d(-phi * panorama_width_ / (2.0 * pi), -theta * panorama_height_ / (pi*57.99/180));
             // cout<<px_mosaic<<endl;
             const int xx = px_mosaic[0],
                       yy = px_mosaic[1];
@@ -349,46 +295,29 @@ void EventVisualizer::data_process() {
                         dy = px_mosaic[1] - yy;
 
             // 4. Update the count image using bilinear voting
-            if (1 <= xx && xx < panorama_weight_ - 1 && 1 <= yy && yy < panorama_height_ - 1) {
+            if (1 <= xx && xx < panorama_width_ - 1 && 1 <= yy && yy < panorama_height_ - 1) {
                 if (t_diff  < 1.) {
                     count_pano.at<float>(yy, xx) += (1.f - dx) * (1.f - dy);
                     count_pano.at<float>(yy, xx + 1) += dx * (1.f - dy);
                     count_pano.at<float>(yy + 1, xx) += (1.f - dx) * dy;
                     count_pano.at<float>(yy + 1, xx + 1) += dx * dy;
-                    count++;
                 } else {
-                    // cout<<1<<endl;
+                    // cout<<2<<endl;
                     double min_val, max_val;
                     cv::Point min_loc, max_loc;
-                    cv::minMaxLoc(count_pano, &min_val, &max_val, &min_loc, &max_loc);
+                    // cv::minMaxLoc(count_pano, &min_val, &max_val, &min_loc, &max_loc);
                     // cout<<min_val<<' '<<max_val<<endl;
-                    show_count_pano(count_pano, max_val, event_buffer[0].ts);
-                    count = 0;
-                    count_pano = cv::Mat::zeros(panorama_height_, panorama_weight_, CV_32F); // 重置为 0
+                    // 将大于20的值截断为20（类似ReLU的截断效果）
+                    max_val = 20.0;
+                    cv::threshold(count_pano, count_pano, max_val, max_val, cv::THRESH_TRUNC);
+                    
+                    show_count_pano(count_pano, max_val, ros::Time().fromNSec(t0_p));
+                    // show_count_pano(count_pano, max_val, event_buffer[0].ts);
+                    count_pano = cv::Mat::zeros(panorama_height_, panorama_width_, CV_32F); // 重置为 0
                     t0_p = event_buffer[i].ts.toNSec();
                 }
             }
         }
-
-        // event_buffer.erase(event_buffer.begin() + count, event_buffer.end());
-
-        // auto T2 = std::chrono::high_resolution_clock::now();
-
-         int max_count = 0;
-
-         for(int i = 0; i<height_; ++i){
-                for(int j = 0; j < weight_; ++j){
-                        if(count_image[i][j] != 0){
-                                time_image[i][j] /= count_image[i][j];
-                                max_count = std::max(max_count,count_image[i][j]);
-                        }
-                }
-         }
-
-        // events(event_buffer,size);
-        show_count_image(count_image, max_count,event_buffer[0].ts);  
-
-
         //release buffer
         event_buffer.clear();
         imu_buffer_.clear();
@@ -407,8 +336,6 @@ void EventVisualizer::data_process() {
 
 
 
-
-
 //main
 int main(int argc, char** argv) {
     ros::init(argc, argv, "datasync_node");
@@ -419,7 +346,7 @@ int main(int argc, char** argv) {
 
     nh_priv.param<int>("weight_param", weight_, 346);
     nh_priv.param<int>("height_param", height_, 260);
-    nh_priv.param<int>("panorama_weight", panorama_weight_, 3163);
+    nh_priv.param<int>("panorama_weight", panorama_width_, 3163);
     nh_priv.param<int>("panorama_height", panorama_height_, 480);
     nh_priv.param<float>("focus", Focus_, 6550);
     nh_priv.param<float>("pixel_size", pixel_size_, 18.5);
