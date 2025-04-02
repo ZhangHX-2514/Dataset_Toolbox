@@ -11,6 +11,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/calib3d.hpp>
 // #include <opencv2/core/eigen.hpp>
 #include <Eigen/Dense> 
 #include <image_transport/image_transport.h> 
@@ -70,7 +71,7 @@ class EventVisualizer {
         std::mutex mtx;
 
         Eigen::Matrix3d R;
-        Eigen::Matrix3d K;
+        cv::Mat K, D;
 
         
 
@@ -83,11 +84,12 @@ class EventVisualizer {
                  0., -0.36670272, -0.93033817;
 
             // Initialize K
-            K << 433.398607901605, 0.284227880114643, 235.267698381848,
-                 0, 433.485784159950, 320.716442889263,
-                 0, 0, 1;
+            K = (cv::Mat_<double>(3, 3) << 433.398607901605, 0.0, 235.267698381848,
+            0.0, 433.485784159950, 320.716442889263,
+            0.0, 0.0, 1.0);
 
-
+            // Initialize D
+            D = (cv::Mat_<double>(1, 5) << -0.1, 0.01, 0.0, 0.0, 0.0); //TODO 更新畸变系数
 
             //sub
             this->event_sub = this->n_.subscribe("/dvs/events", 1, &EventVisualizer::event_cb, this);
@@ -181,7 +183,7 @@ void EventVisualizer::show_count_pano(cv::Mat& count_image, double& max_count, r
     // 创建带时间戳的 ROS 消息头
     std_msgs::Header header;
     header.stamp = timestamp;
-    cout<<image.type()<<endl;
+    // std::cout<<image.type()<<endl;
 
     // 将 OpenCV 图像转换为 ROS 图像消息
     sensor_msgs::ImagePtr msg = cv_bridge::CvImage(header, "mono8", image).toImageMsg();
@@ -316,10 +318,15 @@ void EventVisualizer::data_process() {
                        0, R(1, 1), R(1, 2),
                        -sin_term, R(2, 1) * cos_term, R(2, 2) * cos_term;
 
-            Eigen::Vector3d e_ray_cam;
-            e_ray_cam.x() = (event_buffer[i].x - K(0, 2)) / K(0, 0);
-            e_ray_cam.y() = (event_buffer[i].y - K(1, 2)) / K(1, 1);
-            e_ray_cam.z() = 1.0;
+            // undistort the event point
+            std::vector<cv::Point2f> distorted_points = {cv::Point2f(event_buffer[i].x, event_buffer[i].y)};
+            std::vector<cv::Point2f> undistorted_points;
+
+            cv::undistortPoints(distorted_points, undistorted_points, K, D);
+            Eigen::Vector3d e_ray_cam(undistorted_points[0].x, undistorted_points[0].y, 1.0);
+            // e_ray_cam.x() = (event_buffer[i].x - K(0, 2)) / K(0, 0);
+            // e_ray_cam.y() = (event_buffer[i].y - K(1, 2)) / K(1, 1);
+            // e_ray_cam.z() = 1.0;
 
             // 2. Rotate according to pose(t)
             Eigen::Vector3d e_ray_w = R_eigen * e_ray_cam;
