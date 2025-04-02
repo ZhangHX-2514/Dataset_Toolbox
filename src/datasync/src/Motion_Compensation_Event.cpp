@@ -89,7 +89,7 @@ class EventVisualizer {
             0.0, 0.0, 1.0);
 
             // Initialize D
-            D = (cv::Mat_<double>(1, 5) << -0.1, 0.01, 0.0, 0.0, 0.0); //TODO 更新畸变系数
+            D = (cv::Mat_<double>(1, 5) << -0.0051, 0.1810, -6.3519e-04, 8.4848e-04, -0.4321); //TODO 更新畸变系数
 
             //sub
             this->event_sub = this->n_.subscribe("/dvs/events", 1, &EventVisualizer::event_cb, this);
