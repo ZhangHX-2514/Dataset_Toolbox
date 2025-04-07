@@ -1,8 +1,0 @@
-prefix=/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_file_writer
-
-Name: dvs_file_writer
-Description: Description of dvs_file_writer
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp dvs_msgs

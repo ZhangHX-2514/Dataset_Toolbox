@@ -1,6 +1,0 @@
-event_converter
-/home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/cmake.lock /home/dai/workspace/Dataset_Toolbox/devel/./cmake.lock
-/home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/share/event_converter/cmake/event_converterConfig-version.cmake /home/dai/workspace/Dataset_Toolbox/devel/share/event_converter/cmake/event_converterConfig-version.cmake
-/home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/share/event_converter/cmake/event_converterConfig.cmake /home/dai/workspace/Dataset_Toolbox/devel/share/event_converter/cmake/event_converterConfig.cmake
-/home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/lib/pkgconfig/event_converter.pc /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/event_converter.pc
-/home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/lib/event_converter/event_bag_to_dat /home/dai/workspace/Dataset_Toolbox/devel/lib/event_converter/event_bag_to_dat

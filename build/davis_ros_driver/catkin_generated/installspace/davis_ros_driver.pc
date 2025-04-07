@@ -1,8 +1,0 @@
-prefix=/home/dai/workspace/Dataset_Toolbox/install
-
-Name: davis_ros_driver
-Description: Description of davis_ros_driver
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib -ldavis_ros_driver_nodelet
-Requires: roscpp dvs_msgs std_msgs sensor_msgs dynamic_reconfigure camera_info_manager nodelet

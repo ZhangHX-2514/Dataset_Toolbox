@@ -1,8 +1,0 @@
-prefix=/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_msgs
-
-Name: dvs_msgs
-Description: Description of dvs_msgs
-Version: 0.0.0
-Cflags: -I/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_msgs/include
-Libs: -L${prefix}/lib 
-Requires: message_runtime std_msgs

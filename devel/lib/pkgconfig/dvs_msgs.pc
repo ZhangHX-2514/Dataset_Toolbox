@@ -1,1 +1,0 @@
-/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_msgs/lib/pkgconfig/dvs_msgs.pc

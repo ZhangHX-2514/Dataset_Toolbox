@@ -1,8 +1,0 @@
-prefix=/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_calibration
-
-Name: dvs_calibration
-Description: Description of dvs_calibration
-Version: 0.0.0
-Cflags: -I/home/dai/workspace/Dataset_Toolbox/src/rpg_dvs_ros/dvs_calibration/include
-Libs: -L${prefix}/lib 
-Requires: roscpp image_transport cv_bridge dvs_msgs geometry_msgs sensor_msgs

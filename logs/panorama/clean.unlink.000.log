@@ -1,4 +1,0 @@
-Warning: Dest file doesn't exist, so it can't be removed: /home/dai/workspace/Dataset_Toolbox/devel/lib/panorama/Panorama
-Unlinking: /home/dai/workspace/Dataset_Toolbox/devel/share/panorama/cmake/panoramaConfig.cmake
-Unlinking: /home/dai/workspace/Dataset_Toolbox/devel/share/panorama/cmake/panoramaConfig-version.cmake
-Unlinking: /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/panorama.pc

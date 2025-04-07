@@ -1,7 +1,0 @@
-[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
-/bin/ld: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o: in function `panorama::PoseGraphOptimizer::show_count_pano(cv::Mat&, double&, ros::Time)':
-pose_graph_optimizer.cpp:(.text+0x9db): undefined reference to `cv_bridge::CvImage::toImageMsg() const'
-collect2: error: ld returned 1 exit status
-make[2]: *** [CMakeFiles/Panorama.dir/build.make:297: /home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/lib/panorama/Panorama] Error 1
-make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
-make: *** [Makefile:146: all] Error 2

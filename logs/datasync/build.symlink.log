@@ -1,6 +1,0 @@
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/datasync/cmake/datasyncConfig.cmake
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/datasync/cmake/datasyncConfig-version.cmake
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/datasync.pc
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/datasync/IMU_Motion_Compensation
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/datasync/Initial_Motion_Compensation
-Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/datasync/Motion_Compensation_Event

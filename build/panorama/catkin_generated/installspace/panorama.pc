@@ -1,8 +1,0 @@
-prefix=/home/dai/workspace/Dataset_Toolbox/install
-
-Name: panorama
-Description: Description of panorama
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

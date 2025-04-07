@@ -1,1 +1,0 @@
-/home/dai/workspace/Dataset_Toolbox/devel/.private/davis_ros_driver/lib/pkgconfig/davis_ros_driver.pc
