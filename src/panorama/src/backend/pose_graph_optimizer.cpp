@@ -6,6 +6,9 @@
 #include <Eigen/Dense>
 #include <cv_bridge/cv_bridge.h>
 
+#include <iostream>
+using namespace std;  
+
 namespace panorama {
 
 PoseGraphOptimizer::PoseGraphOptimizer(ros::NodeHandle* nh): nh_(nh), it_(*nh)

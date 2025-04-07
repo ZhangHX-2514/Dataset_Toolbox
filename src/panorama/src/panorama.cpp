@@ -128,6 +128,7 @@ void Panorama::eventsCallback(const dvs_msgs::EventArray::ConstPtr& msg) {
 
     if (!is_t0_p_set_ && !msg->events.empty()) {
         t0_p = msg->events[0].ts;  // 使用第一个事件的时间戳
+        
         is_t0_p_set_ = true;
         
         // 传递给前端和后端

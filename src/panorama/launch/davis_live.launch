@@ -8,12 +8,12 @@
     
     <!-- COMMON PARAMS -->
     <param name="contrast_measure" value="0" /> 
-    <param name="frontend_event_sample_rate" value="1" /> 
+    <param name="frontend_event_sample_rate" value="5" /> 
     <param name="panorama_height" value="480" /> 
     <param name="panorama_width" value="3163" /> 
-    <rosparam param="R_matrix">[1., 0., 0.,
-                                0., -0.93033817, 0.36670272,
-                                0., -0.36670272, -0.93033817]</rosparam>
+    <rosparam param="R_matrix">[1.         , 0.         , 0.        ,
+                                0.         ,-0.81915204 , 0.57357644,
+                                0.          ,-0.57357644 , -0.81915204]</rosparam>
 
 
   </node>
@@ -23,7 +23,7 @@
   <node name="dvs_cam_info_pub" pkg="panorama" type="publish_camera_info.py" output="screen"/>  
 
   <!-- Play rosbag -->
-  <node pkg="rosbag" type="play" name="player" args="-d 1.0 -r 1.0 /home/dai/2025-04-03-16-20-51.bag" />
+  <node pkg="rosbag" type="play" name="player" args="-d 1.0 -r 0.5 /home/dai/2025-04-03-16-20-51.bag" />
 
 
   <!-- Start rviz visualization with preset config -->
