@@ -1,0 +1,62 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In constructor ‘[01m[Kpanorama::Panorama::Panorama(ros::NodeHandle&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:29:50:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kpanorama::AngVelEstimator::AngVelEstimator(ros::NodeHandle*)[m[K’
+   29 |     ang_vel_estimator_ = new AngVelEstimator(&nh_[01;31m[K)[m[K;
+      |                                                  [01;31m[K^[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kpanorama::AngVelEstimator::AngVelEstimator()[m[K’
+   17 | class [01;36m[KAngVelEstimator[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kpanorama::AngVelEstimator::AngVelEstimator(const panorama::AngVelEstimator&)[m[K’
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kros::NodeHandle*[m[K’ to ‘[01m[Kconst panorama::AngVelEstimator&[m[K’
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kpanorama::AngVelEstimator::AngVelEstimator(panorama::AngVelEstimator&&)[m[K’
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:17:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kros::NodeHandle*[m[K’ to ‘[01m[Kpanorama::AngVelEstimator&&[m[K’
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:32:56:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kpanorama::PoseGraphOptimizer::PoseGraphOptimizer(ros::NodeHandle*)[m[K’
+   32 |     pose_graph_optimizer_ = new PoseGraphOptimizer(&nh_[01;31m[K)[m[K;
+      |                                                        [01;31m[K^[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:9[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:15:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kpanorama::PoseGraphOptimizer::PoseGraphOptimizer()[m[K’
+   15 | class [01;36m[KPoseGraphOptimizer[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:15:7:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:38:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::AngVelEstimator[m[K’ has no member named ‘[01m[KsetBackend[m[K’
+   38 |     ang_vel_estimator_->[01;31m[KsetBackend[m[K(pose_graph_optimizer_);
+      |                         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:39:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::PoseGraphOptimizer[m[K’ has no member named ‘[01m[KsetFrontend[m[K’
+   39 |     pose_graph_optimizer_->[01;31m[KsetFrontend[m[K(ang_vel_estimator_);
+      |                            [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::cameraInfoCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:76:40:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kimage_geometry::PinholeCameraModel*[m[K’ to ‘[01m[Kconst Size&[m[K’ {aka ‘[01m[Kconst cv::Size_<int>&[m[K’}
+   76 |         ang_vel_estimator_->initialize([01;31m[K&cam[m[K, front_end_params_, precomputed_bearing_vectors);
+      |                                        [01;31m[K^~~~[m[K
+      |                                        [01;31m[K|[m[K
+      |                                        [01;31m[Kimage_geometry::PinholeCameraModel*[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:19:37:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid panorama::AngVelEstimator::initialize(const Size&, const panorama::FrontEndParams&, const std::vector<cv::Point3_<double> >*)[m[K’
+   19 |     void initialize([01;36m[Kconst cv::Size& sensor_size[m[K,
+      |                     [01;36m[K~~~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:83:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd::deque<dvs_msgs::Event_<std::allocator<void> > > panorama::AngVelEstimator::events_[m[K’ is private within this context
+   83 |                                           &(ang_vel_estimator_->[01;31m[Kevents_[m[K),
+      |                                                                 [01;31m[K^~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:34:33:[m[K [01;36m[Knote: [m[Kdeclared private here
+   34 |     std::deque<dvs_msgs::Event> [01;36m[Kevents_[m[K;
+      |                                 [01;36m[K^~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:82:43:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kpanorama::PoseGraphParams[m[K’ to ‘[01m[Kconst panorama::BackEndParams&[m[K’
+   82 |                                           [01;31m[Kback_end_params_[m[K,
+      |                                           [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                                           [01;31m[K|[m[K
+      |                                           [01;31m[Kpanorama::PoseGraphParams[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:9[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:18:41:[m[K [01;36m[Knote: [m[K  initializing argument 3 of ‘[01m[Kvoid panorama::PoseGraphOptimizer::initialize(int, int, const panorama::BackEndParams&, const std::deque<dvs_msgs::Event_<std::allocator<void> > >*, const std::vector<cv::Point3_<double> >*)[m[K’
+   18 |                    [01;36m[Kconst BackEndParams& params[m[K,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

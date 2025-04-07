@@ -1,0 +1,39 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:36:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_geometry[m[K’ does not name a type
+   36 |     [01;31m[Kimage_geometry[m[K::PinholeCameraModel cam;
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:36:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_geometry[m[K’ does not name a type
+   36 |     [01;31m[Kimage_geometry[m[K::PinholeCameraModel cam;
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:38:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid panorama::Panorama::precomputeBearingVectors()[m[K’
+   38 | void [01;31m[KPanorama[m[K::precomputeBearingVectors()
+      |      [01;31m[K^~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:38:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid panorama::Panorama::precomputeBearingVectors()[m[K’
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:17:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass panorama::Panorama[m[K’ defined here
+   17 | class [01;36m[KPanorama[m[K
+      |       [01;36m[K^~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::cameraInfoCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:59:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcam[m[K’ was not declared in this scope
+   59 |         [01;31m[Kcam[m[K.fromCameraInfo(camera_info);
+      |         [01;31m[K^~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:66:9:[m[K [01;31m[Kerror: [m[K‘[01m[KprecomputeBearingVectors[m[K’ was not declared in this scope
+   66 |         [01;31m[KprecomputeBearingVectors[m[K();
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:67:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+   67 |         [01;31m[Kang_vel_estimator_[m[K->initialize(&cam, front_end_params_, precomputed_bearing_vectors);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:67:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kprecomputed_bearing_vectors[m[K’ was not declared in this scope
+   67 |         ang_vel_estimator_->initialize(&cam, front_end_params_, [01;31m[Kprecomputed_bearing_vectors[m[K);
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:72:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_graph_optimizer_[m[K’ was not declared in this scope
+   72 |         [01;31m[Kpose_graph_optimizer_[m[K->initialize(camera_width, camera_height,
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:90: CMakeFiles/Panorama.dir/src/node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

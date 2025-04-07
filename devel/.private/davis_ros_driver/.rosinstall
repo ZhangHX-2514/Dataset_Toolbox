@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/dai/workspace/Dataset_Toolbox/devel/.private/davis_ros_driver/setup.sh

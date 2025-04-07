@@ -1,0 +1,19 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+/bin/ld: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o: in function `panorama::AngVelEstimator::AngVelEstimator(ros::NodeHandle*)':
+ang_vel_estimator.cpp:(.text+0x64): undefined reference to `image_transport::ImageTransport::ImageTransport(ros::NodeHandle const&)'
+/bin/ld: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o: in function `panorama::AngVelEstimator::~AngVelEstimator()':
+ang_vel_estimator.cpp:(.text+0xe4): undefined reference to `image_transport::ImageTransport::~ImageTransport()'
+/bin/ld: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o: in function `panorama::PoseGraphOptimizer::PoseGraphOptimizer(ros::NodeHandle*)':
+pose_graph_optimizer.cpp:(.text+0x8b): undefined reference to `image_transport::ImageTransport::ImageTransport(ros::NodeHandle const&)'
+/bin/ld: pose_graph_optimizer.cpp:(.text+0xe9): undefined reference to `image_transport::ImageTransport::advertise(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned int, bool)'
+/bin/ld: pose_graph_optimizer.cpp:(.text+0x185): undefined reference to `image_transport::ImageTransport::~ImageTransport()'
+/bin/ld: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o: in function `panorama::PoseGraphOptimizer::~PoseGraphOptimizer()':
+pose_graph_optimizer.cpp:(.text+0x1be): undefined reference to `image_transport::Publisher::shutdown()'
+/bin/ld: pose_graph_optimizer.cpp:(.text+0x1e2): undefined reference to `image_transport::ImageTransport::~ImageTransport()'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:277: /home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/lib/panorama/Panorama] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

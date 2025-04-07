@@ -1,0 +1,11 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:[m[K In member function ‘[01m[Kpanorama::ProcessedEventData panorama::AngVelEstimator::processEvent(const Event&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:109:5:[m[K [01;31m[Kerror: [m[Kdesignator order for field ‘[01m[Kpanorama::ProcessedEventData::timestamp[m[K’ does not match declaration order in ‘[01m[Kpanorama::ProcessedEventData[m[K’
+  109 |     [01;31m[K}[m[K;
+      |     [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

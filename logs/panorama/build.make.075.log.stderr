@@ -1,0 +1,24 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::WarpPano(const panorama::ProcessedEventData&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:65:71:[m[K [01;31m[Kerror: [m[K‘[01m[Kt0_p[m[K’ was not declared in this scope; did you mean ‘[01m[Kt0_p_[m[K’?
+   65 |             show_count_pano(count_pano, max_val, ros::Time().fromNSec([01;31m[Kt0_p[m[K));
+      |                                                                       [01;31m[K^~~~[m[K
+      |                                                                       [32m[Kt0_p_[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:[m[K In member function ‘[01m[Kpanorama::ProcessedEventData panorama::AngVelEstimator::processEvent(const Event&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:82:42:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator-[m[K’ (operand types are ‘[01m[Kuint64_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kros::Time[m[K’)
+   82 |     float t_diff = double([32m[Kev.ts.toNSec()[m[K [01;31m[K-[m[K [34m[Kt0_p_[m[K) / 1000000000.0;
+      |                           [32m[K~~~~~~~~~~~~~~[m[K [01;31m[K^[m[K [34m[K~~~~~[m[K
+      |                                       [32m[K|[m[K    [34m[K|[m[K
+      |                                       [32m[K|[m[K    [34m[Kros::Time[m[K
+      |                                       [32m[Kuint64_t {aka long unsigned int}[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:109:5:[m[K [01;31m[Kerror: [m[Kdesignator order for field ‘[01m[Kpanorama::ProcessedEventData::timestamp[m[K’ does not match declaration order in ‘[01m[Kpanorama::ProcessedEventData[m[K’
+  109 |     [01;31m[K}[m[K;
+      |     [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:118: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

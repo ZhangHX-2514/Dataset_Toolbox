@@ -1,0 +1,6 @@
+Linked: (/home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/share/panorama/cmake/panoramaConfig.cmake, /home/dai/workspace/Dataset_Toolbox/devel/share/panorama/cmake/panoramaConfig.cmake)
+Linked: (/home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/share/panorama/cmake/panoramaConfig-version.cmake, /home/dai/workspace/Dataset_Toolbox/devel/share/panorama/cmake/panoramaConfig-version.cmake)
+Linked: (/home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/lib/pkgconfig/panorama.pc, /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/panorama.pc)
+Linked: (/home/dai/workspace/Dataset_Toolbox/devel/.private/panorama/lib/panorama/Panorama, /home/dai/workspace/Dataset_Toolbox/devel/lib/panorama/Panorama)
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/panorama/publish_camera_info.py
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/panorama/cmake.lock

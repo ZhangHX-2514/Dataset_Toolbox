@@ -1,0 +1,3 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/event_bag_to_dat.dir/src/event_bag_to_dat.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/dai/workspace/Dataset_Toolbox/devel/.private/event_converter/lib/event_converter/event_bag_to_dat[0m
+[100%] Built target event_bag_to_dat

@@ -1,0 +1,81 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::WarpPano(const panorama::ProcessedEventData&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:62:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_mosaic[m[K’ was not declared in this scope
+   62 |     const int xx = [01;31m[Kpx_mosaic[m[K[0],
+      |                    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:67:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_width_[m[K’ was not declared in this scope
+   67 |     if (1 <= xx && xx < [01;31m[Kpanorama_width_[m[K - 1 && 1 <= yy && yy < panorama_height_ - 1) {
+      |                         [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:67:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kyy[m[K’ was not declared in this scope; did you mean ‘[01m[Kyn[m[K’?
+   67 |     if (1 <= xx && xx < panorama_width_ - 1 && 1 <= [01;31m[Kyy[m[K && yy < panorama_height_ - 1) {
+      |                                                     [01;31m[K^~[m[K
+      |                                                     [32m[Kyn[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:67:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_height_[m[K’ was not declared in this scope
+   67 |     if (1 <= xx && xx < panorama_width_ - 1 && 1 <= yy && yy < [01;31m[Kpanorama_height_[m[K - 1) {
+      |                                                                [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:68:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kt_diff[m[K’ was not declared in this scope
+   68 |         if ([01;31m[Kt_diff[m[K  < 1.) {
+      |             [01;31m[K^~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:69:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_pano[m[K’ was not declared in this scope; did you mean ‘[01m[Kshow_count_pano[m[K’?
+   69 |             [01;31m[Kcount_pano[m[K.at<float>(yy, xx) += (1.f - dx) * (1.f - dy);
+      |             [01;31m[K^~~~~~~~~~[m[K
+      |             [32m[Kshow_count_pano[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:69:27:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kfloat[m[K’
+   69 |             count_pano.at<[01;31m[Kfloat[m[K>(yy, xx) += (1.f - dx) * (1.f - dy);
+      |                           [01;31m[K^~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:70:27:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kfloat[m[K’
+   70 |             count_pano.at<[01;31m[Kfloat[m[K>(yy, xx + 1) += dx * (1.f - dy);
+      |                           [01;31m[K^~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:71:27:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kfloat[m[K’
+   71 |             count_pano.at<[01;31m[Kfloat[m[K>(yy + 1, xx) += (1.f - dx) * dy;
+      |                           [01;31m[K^~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:72:27:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kfloat[m[K’
+   72 |             count_pano.at<[01;31m[Kfloat[m[K>(yy + 1, xx + 1) += dx * dy;
+      |                           [01;31m[K^~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:81:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_pano[m[K’ was not declared in this scope; did you mean ‘[01m[Kshow_count_pano[m[K’?
+   81 |             cv::threshold([01;31m[Kcount_pano[m[K, count_pano, max_val, max_val, cv::THRESH_TRUNC);
+      |                           [01;31m[K^~~~~~~~~~[m[K
+      |                           [32m[Kshow_count_pano[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:83:71:[m[K [01;31m[Kerror: [m[K‘[01m[Kt0_p[m[K’ was not declared in this scope
+   83 |             show_count_pano(count_pano, max_val, ros::Time().fromNSec([01;31m[Kt0_p[m[K));
+      |                                                                       [01;31m[K^~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:86:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kevent_buffer[m[K’ was not declared in this scope; did you mean ‘[01m[Ksetbuffer[m[K’?
+   86 |             t0_p = [01;31m[Kevent_buffer[m[K[i].ts.toNSec();
+      |                    [01;31m[K^~~~~~~~~~~~[m[K
+      |                    [32m[Ksetbuffer[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:86:33:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+   86 |             t0_p = event_buffer[[01;31m[Ki[m[K].ts.toNSec();
+      |                                 [01;31m[K^[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::show_count_pano(cv::Mat&, double&, ros::Time)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:96:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_height_[m[K’ was not declared in this scope
+   96 |     cv::Mat image([01;31m[Kpanorama_height_[m[K, panorama_width_, CV_8UC1);
+      |                   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:96:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_width_[m[K’ was not declared in this scope
+   96 |     cv::Mat image(panorama_height_, [01;31m[Kpanorama_width_[m[K, CV_8UC1);
+      |                                     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:111:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpano_pub[m[K’ was not declared in this scope
+  111 |     [01;31m[Kpano_pub[m[K.publish(msg);
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:[m[K In member function ‘[01m[Kpanorama::ProcessedEventData panorama::AngVelEstimator::processEvent(const Event&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:79:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kt_diff[m[K’ was not declared in this scope
+   79 |     double cos_term = cos(2 * pi * [01;31m[Kt_diff[m[K);
+      |                                    [01;31m[K^~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:98:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcenter[m[K’ was not declared in this scope
+   98 |     px_mosaic = [01;31m[Kcenter[m[K + Eigen::Vector2d(-phi * params.image_opt.panorama_width / (2.0 * pi), -theta * params.image_opt.panorama_height / (pi*57.99/180));
+      |                 [01;31m[K^~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:100:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst Event[m[K’ {aka ‘[01m[Kconst struct dvs_msgs::Event_<std::allocator<void> >[m[K’} has no member named ‘[01m[Ktimestamp[m[K’
+  100 |     return {px_mosaic,ev.[01;31m[Ktimestamp[m[K};
+      |                          [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:100:35:[m[K [01;31m[Kerror: [m[Kcould not convert ‘[01m[K{px_mosaic, <expression error>}[m[K’ from ‘[01m[K<brace-enclosed initializer list>[m[K’ to ‘[01m[Kpanorama::ProcessedEventData[m[K’
+  100 |     return {px_mosaic,ev.timestamp[01;31m[K}[m[K;
+      |                                   [01;31m[K^[m[K
+      |                                   [01;31m[K|[m[K
+      |                                   [01;31m[K<brace-enclosed initializer list>[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:118: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

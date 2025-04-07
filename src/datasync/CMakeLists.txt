@@ -31,10 +31,11 @@ find_package(OpenCL)
 # find_package(Boost REQUIRED COMPONENTS system)
 
 # 查找 Eigen3
-find_package(Eigen3 REQUIRED)
+# find_package(Eigen3 REQUIRED)
 
 # 添加 Eigen3 的头文件路径
-include_directories(${EIGEN3_INCLUDE_DIR})
+# include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(/usr/include/eigen3/)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed

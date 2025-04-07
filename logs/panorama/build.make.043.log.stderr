@@ -1,0 +1,26 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::cameraInfoCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:83:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_pano[m[K’ was not declared in this scope
+   83 |         [01;31m[Kcount_pano[m[K = cv::Mat::zeros(panorama_height_, panorama_width_, CV_32F);
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::eventsCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:116:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::AngVelEstimator[m[K’ has no member named ‘[01m[KpushEvent[m[K’
+  116 |         ang_vel_estimator_->[01;31m[KpushEvent[m[K(*ev);
+      |                             [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:67:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid panorama::AngVelEstimator::pushEvent(const Event&)[m[K’
+   67 | void [01;31m[KAngVelEstimator[m[K::pushEvent(const dvs_msgs::Event& event)
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:67:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid panorama::AngVelEstimator::pushEvent(const Event&)[m[K’
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:2[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:27:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass panorama::AngVelEstimator[m[K’ defined here
+   27 | class [01;36m[KAngVelEstimator[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

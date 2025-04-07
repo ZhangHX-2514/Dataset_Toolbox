@@ -1,0 +1,6 @@
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/dvs_calibration/cmake/dvs_calibrationConfig.cmake
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/dvs_calibration/cmake/dvs_calibrationConfig-version.cmake
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/dvs_calibration/stereo
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/dvs_calibration/camera_dvs
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/dvs_calibration/mono
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/dvs_calibration.pc

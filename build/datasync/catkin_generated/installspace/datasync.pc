@@ -1,0 +1,8 @@
+prefix=/home/dai/workspace/Dataset_Toolbox/install
+
+Name: datasync
+Description: Description of datasync
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

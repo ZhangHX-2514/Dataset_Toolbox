@@ -34,13 +34,13 @@ rosrun event_converter event_bag_to_dat <input_bag_file> <output_dat_file> <t>
 run `bag_to_image.py`
 
 ```
-python bag_to_image.py /path/to/your/bagfile.bag /path/to/output/folder
+python3 bag_to_image.py /path/to/your/bagfile.bag /path/to/output/folder
 ```
 
 run `json_to_npy.py`
 
 ```
-python json_to_npy.py /path/to/json/folder /path/to/output.npy
+python3 json_to_npy.py /path/to/json/folder /path/to/output.npy
 ```
 
 ## prophesee-automotive-dataset-toolbox

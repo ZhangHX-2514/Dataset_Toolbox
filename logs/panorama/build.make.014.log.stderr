@@ -1,0 +1,96 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:3[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:42:22:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstimator[m[K’ has not been declared
+   42 |     void setFrontend([01;31m[KAngVelEstimator[m[K* ptr) { ang_vel_estimator_ = ptr; }
+      |                      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setFrontend(int*)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:42:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+   42 |     void setFrontend(AngVelEstimator* ptr) { [01;31m[Kang_vel_estimator_[m[K = ptr; }
+      |                                              [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K At global scope:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:37:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   37 |     [01;31m[KAngVelEstParams[m[K params;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:3[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:42:22:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstimator[m[K’ has not been declared
+   42 |     void setFrontend([01;31m[KAngVelEstimator[m[K* ptr) { ang_vel_estimator_ = ptr; }
+      |                      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:40:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   40 |                                  const [01;31m[KAngVelEstParams[m[K& val,
+      |                                        [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:45:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   45 |     [01;31m[KAngVelEstParams[m[K params;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setFrontend(int*)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:42:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+   42 |     void setFrontend(AngVelEstimator* ptr) { [01;31m[Kang_vel_estimator_[m[K = ptr; }
+      |                                              [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:8[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K At global scope:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:37:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   37 |     [01;31m[KAngVelEstParams[m[K params;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid cmax_slam::AngVelEstimator::setBackend(cmax_slam::PoseGraphOptimizer*)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:43:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_graph_optimizer_[m[K’ was not declared in this scope; did you mean ‘[01m[KPoseGraphOptimizer[m[K’?
+   43 |     void setBackend(PoseGraphOptimizer* ptr) { [01;31m[Kpose_graph_optimizer_[m[K = ptr; }
+      |                                                [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                [32m[KPoseGraphOptimizer[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:40:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   40 |                                  const [01;31m[KAngVelEstParams[m[K& val,
+      |                                        [01;31m[K^~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:[m[K At global scope:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:44:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstimator[m[K’ does not name a type
+   44 |     [01;31m[KAngVelEstimator[m[K* ang_vel_estimator_;       // Front-end
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:45:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstParams[m[K’ does not name a type
+   45 |     [01;31m[KAngVelEstParams[m[K params;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid cmax_slam::AngVelEstimator::setBackend(cmax_slam::PoseGraphOptimizer*)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:43:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_graph_optimizer_[m[K’ was not declared in this scope; did you mean ‘[01m[KPoseGraphOptimizer[m[K’?
+   43 |     void setBackend(PoseGraphOptimizer* ptr) { [01;31m[Kpose_graph_optimizer_[m[K = ptr; }
+      |                                                [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                [32m[KPoseGraphOptimizer[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In constructor ‘[01m[Kpanorama::Panorama::Panorama(ros::NodeHandle&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:29:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+   29 |     [01;31m[Kang_vel_estimator_[m[K = new AngVelEstimator(&nh_);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:29:30:[m[K [01;31m[Kerror: [m[Kexpected type-specifier before ‘[01m[KAngVelEstimator[m[K’
+   29 |     ang_vel_estimator_ = new [01;31m[KAngVelEstimator[m[K(&nh_);
+      |                              [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In destructor ‘[01m[Kpanorama::Panorama::~Panorama()[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:45:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::PoseGraphOptimizer[m[K’ has no member named ‘[01m[KrequestStop[m[K’
+   45 |         pose_graph_optimizer_->[01;31m[KrequestStop[m[K();
+      |                                [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:[m[K At global scope:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:44:5:[m[K [01;31m[Kerror: [m[K‘[01m[KAngVelEstimator[m[K’ does not name a type
+   44 |     [01;31m[KAngVelEstimator[m[K* ang_vel_estimator_;       // Front-end
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::cameraInfoCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:76:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+   76 |         [01;31m[Kang_vel_estimator_[m[K->initialize(&cam, front_end_params_, precomputed_bearing_vectors);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::eventsCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:102:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+  102 |         [01;31m[Kang_vel_estimator_[m[K->pushEvent(*ev);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:106:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_vel_estimator_[m[K’ was not declared in this scope
+  106 |     if ([01;31m[Kang_vel_estimator_[m[K->isReadyToUpdate()) {
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:108:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::PoseGraphOptimizer[m[K’ has no member named ‘[01m[KupdatePose[m[K’
+  108 |         pose_graph_optimizer_->[01;31m[KupdatePose[m[K(rotation); // 后端更新位姿
+      |                                [01;31m[K^~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:90: CMakeFiles/Panorama.dir/src/node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

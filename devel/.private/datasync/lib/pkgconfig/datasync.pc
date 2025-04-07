@@ -1,0 +1,8 @@
+prefix=/home/dai/workspace/Dataset_Toolbox/devel/.private/datasync
+
+Name: datasync
+Description: Description of datasync
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

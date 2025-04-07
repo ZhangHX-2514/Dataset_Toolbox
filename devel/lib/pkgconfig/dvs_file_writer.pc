@@ -1,0 +1,1 @@
+/home/dai/workspace/Dataset_Toolbox/devel/.private/dvs_file_writer/lib/pkgconfig/dvs_file_writer.pc

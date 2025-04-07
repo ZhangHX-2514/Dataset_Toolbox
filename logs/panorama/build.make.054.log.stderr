@@ -1,0 +1,29 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:59:1:[m[K [01;31m[Kerror: [m[K‘[01m[KProcessedEventData[m[K’ does not name a type
+   59 | [01;31m[KProcessedEventData[m[K AngVelEstimator::processEvent(const dvs_msgs::Event& ev)
+      | [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:115:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid panorama::AngVelEstimator::setRotationMatrix(const std::vector<double>&)[m[K’
+  115 | void [01;31m[KAngVelEstimator[m[K::setRotationMatrix(const std::vector<double>& R_matrix) {
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:115:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid panorama::AngVelEstimator::setRotationMatrix(const std::vector<double>&)[m[K’
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:2[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:27:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass panorama::AngVelEstimator[m[K’ defined here
+   27 | class [01;36m[KAngVelEstimator[m[K {
+      |       [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::eventsCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:128:5:[m[K [01;31m[Kerror: [m[K‘[01m[KProcessedEventData[m[K’ was not declared in this scope
+  128 |     [01;31m[KProcessedEventData[m[K result = ang_vel_estimator_->processEvent(*ev);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:131:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass panorama::PoseGraphOptimizer[m[K’ has no member named ‘[01m[KaddProcessedData[m[K’
+  131 |     pose_graph_optimizer_->[01;31m[KaddProcessedData[m[K(result);
+      |                            [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:131:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kresult[m[K’ was not declared in this scope
+  131 |     pose_graph_optimizer_->addProcessedData([01;31m[Kresult[m[K);
+      |                                             [01;31m[K^~~~~~[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

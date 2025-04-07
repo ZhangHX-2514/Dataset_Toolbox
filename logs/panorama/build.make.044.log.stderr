@@ -1,0 +1,64 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:[m[K In member function ‘[01m[Kvoid panorama::AngVelEstimator::pushEvent(const Event&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:73:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kevent_begin[m[K’ was not declared in this scope
+   73 |     for (auto ev = [01;31m[Kevent_begin[m[K; ev < event_end; ev += warp_opt_.event_sample_rate)
+      |                    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::cameraInfoCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:83:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcount_pano[m[K’ was not declared in this scope
+   83 |         [01;31m[Kcount_pano[m[K = cv::Mat::zeros(panorama_height_, panorama_width_, CV_32F);
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:73:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kevent_end[m[K’ was not declared in this scope
+   73 |     for (auto ev = event_begin; ev < [01;31m[Kevent_end[m[K; ev += warp_opt_.event_sample_rate)
+      |                                      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:73:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kwarp_opt_[m[K’ was not declared in this scope
+   73 |     for (auto ev = event_begin; ev < event_end; ev += [01;31m[Kwarp_opt_[m[K.event_sample_rate)
+      |                                                       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:76:62:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kstd::vector<cv::Point3_<double> >[m[K’
+   76 |         const cv::Point3d bvec = precomputed_bearing_vectors_[01;31m[K->[m[Kat(ev->y*sensor_width_ + ev->x);
+      |                                                              [01;31m[K^~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:76:73:[m[K [01;31m[Kerror: [m[K‘[01m[Ksensor_width_[m[K’ was not declared in this scope
+   76 |         const cv::Point3d bvec = precomputed_bearing_vectors_->at(ev->y*[01;31m[Ksensor_width_[m[K + ev->x);
+      |                                                                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:79:35:[m[K [01;31m[Kerror: [m[K‘[01m[KR_eigen[m[K’ was not declared in this scope; did you mean ‘[01m[KEigen[m[K’?
+   79 |         Eigen::Vector3d e_ray_w = [01;31m[KR_eigen[m[K * e_ray_cam;
+      |                                   [01;31m[K^~~~~~~[m[K
+      |                                   [32m[KEigen[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:89:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kcenter[m[K’ was not declared in this scope
+   89 |         px_mosaic = [01;31m[Kcenter[m[K + Eigen::Vector2d(-phi * panorama_width_ / (2.0 * pi), -theta * panorama_height_ / (pi*57.99/180));
+      |                     [01;31m[K^~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:89:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_width_[m[K’ was not declared in this scope
+   89 |         px_mosaic = center + Eigen::Vector2d(-phi * [01;31m[Kpanorama_width_[m[K / (2.0 * pi), -theta * panorama_height_ / (pi*57.99/180));
+      |                                                     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:89:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kpi[m[K’ was not declared in this scope; did you mean ‘[01m[Kphi[m[K’?
+   89 |         px_mosaic = center + Eigen::Vector2d(-phi * panorama_width_ / (2.0 * [01;31m[Kpi[m[K), -theta * panorama_height_ / (pi*57.99/180));
+      |                                                                              [01;31m[K^~[m[K
+      |                                                                              [32m[Kphi[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:89:92:[m[K [01;31m[Kerror: [m[K‘[01m[Kpanorama_height_[m[K’ was not declared in this scope; did you mean ‘[01m[Kcam_height_[m[K’?
+   89 |         px_mosaic = center + Eigen::Vector2d(-phi * panorama_width_ / (2.0 * pi), -theta * [01;31m[Kpanorama_height_[m[K / (pi*57.99/180));
+      |                                                                                            [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                                                                                            [32m[Kcam_height_[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:98:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kt_diff[m[K’ was not declared in this scope
+   98 |             if ([01;31m[Kt_diff[m[K  < 1.) {
+      |                 [01;31m[K^~~~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:113:75:[m[K [01;31m[Kerror: [m[K‘[01m[Kt0_p[m[K’ was not declared in this scope
+  113 |                 show_count_pano(count_pano, max_val, ros::Time().fromNSec([01;31m[Kt0_p[m[K));
+      |                                                                           [01;31m[K^~~~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:113:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kshow_count_pano[m[K’ was not declared in this scope; did you mean ‘[01m[Kcount_pano[m[K’?
+  113 |                 [01;31m[Kshow_count_pano[m[K(count_pano, max_val, ros::Time().fromNSec(t0_p));
+      |                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |                 [32m[Kcount_pano[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:116:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kevent_buffer[m[K’ was not declared in this scope; did you mean ‘[01m[Ksetbuffer[m[K’?
+  116 |                 t0_p = [01;31m[Kevent_buffer[m[K[i].ts.toNSec();
+      |                        [01;31m[K^~~~~~~~~~~~[m[K
+      |                        [32m[Ksetbuffer[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:116:37:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+  116 |                 t0_p = event_buffer[[01;31m[Ki[m[K].ts.toNSec();
+      |                                     [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

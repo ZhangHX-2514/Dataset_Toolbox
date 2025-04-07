@@ -1,0 +1,5 @@
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/dvs_renderer/cmake/dvs_rendererConfig-version.cmake
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/share/dvs_renderer/cmake/dvs_rendererConfig.cmake
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/libdvs_renderer_nodelet.so
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/pkgconfig/dvs_renderer.pc
+Symlinking /home/dai/workspace/Dataset_Toolbox/devel/lib/dvs_renderer/dvs_renderer

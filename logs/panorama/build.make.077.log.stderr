@@ -1,0 +1,101 @@
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+[01m[Kcc1plus:[m[K [01;35m[Kwarning: [m[K/usr/local/cuda/lib64/libOpenCL.so: not a directory
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:2[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:2[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid panorama::AngVelEstimator::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::AngVelEstimator::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   40 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/backend/pose_graph_optimizer.cpp:2[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:41:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::PoseGraphOptimizer::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   41 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:3[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:41:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::PoseGraphOptimizer::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   41 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:3[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:41:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::PoseGraphOptimizer::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   41 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/node.cpp:5[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid panorama::AngVelEstimator::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::AngVelEstimator::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   40 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid panorama::AngVelEstimator::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::AngVelEstimator::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   40 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:[m[K In member function ‘[01m[Kvoid panorama::Panorama::eventsCallback(const ConstPtr&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:134:49:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kpanorama::Panorama::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} to ‘[01m[Kconst ros::Time&[m[K’
+  134 |         ang_vel_estimator_->setInitialTimestamp([01;31m[Kt0_p_[m[K);
+      |                                                 [01;31m[K^~~~~[m[K
+      |                                                 [01;31m[K|[m[K
+      |                                                 [01;31m[Kpanorama::Panorama::sll {aka long long int}[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:47:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid panorama::AngVelEstimator::setInitialTimestamp(const ros::Time&)[m[K’
+   40 |     void setInitialTimestamp([01;36m[Kconst ros::Time& t0[m[K) { t0_p_ = t0; }
+      |                              [01;36m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:135:52:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kpanorama::Panorama::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} to ‘[01m[Kconst ros::Time&[m[K’
+  135 |         pose_graph_optimizer_->setInitialTimestamp([01;31m[Kt0_p_[m[K);
+      |                                                    [01;31m[K^~~~~[m[K
+      |                                                    [01;31m[K|[m[K
+      |                                                    [01;31m[Kpanorama::Panorama::sll {aka long long int}[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:3[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/panorama.h:10[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/panorama.cpp:1[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:41:47:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid panorama::PoseGraphOptimizer::setInitialTimestamp(const ros::Time&)[m[K’
+   41 |     void setInitialTimestamp([01;36m[Kconst ros::Time& t0[m[K) { t0_p_ = t0; }
+      |                              [01;36m[K~~~~~~~~~~~~~~~~~^~[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:2[m[K,
+                 from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:3[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:[m[K In member function ‘[01m[Kvoid panorama::AngVelEstimator::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/frontend/ang_vel_estimator.h:40:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::AngVelEstimator::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   40 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+In file included from [01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:3[m[K:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:[m[K In member function ‘[01m[Kvoid panorama::PoseGraphOptimizer::setInitialTimestamp(const ros::Time&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/include/backend/pose_graph_optimizer.h:41:61:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kconst ros::Time[m[K’ to ‘[01m[Kpanorama::PoseGraphOptimizer::sll[m[K’ {aka ‘[01m[Klong long int[m[K’} in assignment
+   41 |     void setInitialTimestamp(const ros::Time& t0) { t0_p_ = [01;31m[Kt0[m[K; }
+      |                                                             [01;31m[K^~[m[K
+      |                                                             [01;31m[K|[m[K
+      |                                                             [01;31m[Kconst ros::Time[m[K
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:[m[K In member function ‘[01m[Kpanorama::ProcessedEventData panorama::AngVelEstimator::processEvent(const Event&)[m[K’:
+[01m[K/home/dai/workspace/Dataset_Toolbox/src/panorama/src/frontend/ang_vel_estimator.cpp:109:5:[m[K [01;31m[Kerror: [m[Kdesignator order for field ‘[01m[Kpanorama::ProcessedEventData::timestamp[m[K’ does not match declaration order in ‘[01m[Kpanorama::ProcessedEventData[m[K’
+  109 |     [01;31m[K}[m[K;
+      |     [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:90: CMakeFiles/Panorama.dir/src/node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:118: CMakeFiles/Panorama.dir/src/backend/pose_graph_optimizer.cpp.o] Error 1
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:76: CMakeFiles/Panorama.dir/src/panorama.cpp.o] Error 1
+make[2]: *** [CMakeFiles/Panorama.dir/build.make:104: CMakeFiles/Panorama.dir/src/frontend/ang_vel_estimator.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1107: CMakeFiles/Panorama.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2
