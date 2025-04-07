@@ -15,8 +15,14 @@ def publish_camera_info():
     msg.K = [429.733259611991, 0.0, 321.365347200167,
             0.0, 429.841866168175,245.160847403009 ,
             0.0, 0.0, 1.0]
-    # msg.R = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-    # msg.P = [518.0679, 0, 354.9334, 0, 0, 516.7520, 239.6250, 0, 0, 0, 1, 0]
+    
+    msg.roi.x_offset = 0
+    msg.roi.y_offset = 0
+    msg.roi.width = msg.width
+    msg.roi.height = msg.height
+
+    msg.R = [1, 0, 0, 0, 1, 0, 0, 0, 1]
+    msg.P = [518.0679, 0, 354.9334, 0, 0, 516.7520, 239.6250, 0, 0, 0, 1, 0]
     
     rospy.loginfo("Publishing CameraInfo to /dvs/camera_info")
     pub.publish(msg)

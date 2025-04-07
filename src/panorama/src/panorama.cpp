@@ -1,8 +1,9 @@
 #include "panorama.h"
 #include <glog/logging.h>
+#include <camera_info_manager/camera_info_manager.h>
 #include <filesystem>
 #include <ctime>
-
+#include <opencv2/calib3d.hpp>
 #include <iostream>
 using namespace std;  
 
@@ -81,13 +82,23 @@ void Panorama::precomputeBearingVectors() {
     const int width = cam.fullResolution().width;
     const int height = cam.fullResolution().height;
 
+    if (!cam.initialized()) {
+        std::cerr << "相机模型未初始化！" << std::endl;
+    }
+
+    std::cout << "相机内参 K:\n" << cam.fullIntrinsicMatrix() << std::endl;
+    std::cout << "畸变系数 D: " << cam.distortionCoeffs() << std::endl; 
+
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
+
             cv::Point2d rectified_point = cam.rectifyPoint(cv::Point2d(x, y));
+            // cout << rectified_point << endl;
+
             cv::Point3d bearing_vec = cam.projectPixelTo3dRay(rectified_point);
             precomputed_bearing_vectors.emplace_back(bearing_vec);
 
-            // cout << precomputed_bearing_vectors.size() << endl;
+            // cout << bearing_vec << endl;
         }
     }
 }

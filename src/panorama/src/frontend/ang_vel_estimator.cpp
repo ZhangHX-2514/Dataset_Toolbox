@@ -82,7 +82,7 @@ ProcessedEventData AngVelEstimator::processEvent(const dvs_msgs::Event& ev)
 
     float t_diff = double(ev.ts.toNSec() - t0_p.toNSec()) / 1000000000.0;
     // cout<<t0_p.toNSec()<<endl;
-    // cout<<ev.ts.toNSec()<<endl;
+    // cout<<precomputed_bearing_vectors_.at(2)<<endl;
 
     double cos_term = cos(2 * pi * t_diff);
     double sin_term = sin(2 * pi * t_diff);
@@ -103,15 +103,19 @@ ProcessedEventData AngVelEstimator::processEvent(const dvs_msgs::Event& ev)
     const double phi = std::atan2(e_ray_w[0], e_ray_w[2]);
     const double theta = std::asin(e_ray_w[1] / e_ray_w.norm());
 
-    const double rho = e_ray_w.norm();
-    const double Ydivrho = e_ray_w[1] / rho;
-    cout<<Ydivrho<<endl;
+    // const double rho = e_ray_w.norm();
+    // const double Ydivrho = e_ray_w[1] / rho;
+    // cout<<bvec.x<<endl;  
+    // cout<<bvec<<endl; 
+
+
+    // cout<<theta<<endl;
 
 
     px_mosaic = center_ + Eigen::Vector2d(-phi * params.image_opt.panorama_width / (2.0 * pi), -theta * params.image_opt.panorama_height / (pi*57.99/180));
-    cout<<center_<<endl;
+    // cout<<center_<<endl;
 
-    cout<<px_mosaic<<endl;
+    // cout<<px_mosaic<<endl;
 
     return ProcessedEventData{
         .timestamp = ev.ts,

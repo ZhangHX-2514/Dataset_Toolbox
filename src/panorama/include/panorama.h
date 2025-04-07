@@ -26,6 +26,7 @@ public:
 
     std::vector<cv::Point3d> precomputed_bearing_vectors; //预计算
     image_geometry::PinholeCameraModel cam;//相机模型
+    sensor_msgs::CameraInfo camera_info;
 
 
 
@@ -38,7 +39,7 @@ private:
     ros::Subscriber event_sub_, imu_sub_,camera_info_sub_;
     ros::Time t0_p;
     bool is_t0_p_set_; 
-    
+
     void precomputeBearingVectors();
     void eventsCallback(const dvs_msgs::EventArray::ConstPtr& msg);
     void cameraInfoCallback(const sensor_msgs::CameraInfo::ConstPtr& camera_info);
